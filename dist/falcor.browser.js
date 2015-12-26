@@ -15,51 +15,74 @@
  */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.falcor = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var falcor = require(34);
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var jsong = require(136);
+=======
+var jsong = require(122);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 falcor.atom = jsong.atom;
 falcor.ref = jsong.ref;
 falcor.error = jsong.error;
 falcor.pathValue = jsong.pathValue;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 falcor.HttpDataSource = require(131);
 
 module.exports = falcor;
 
 },{"131":131,"136":136,"34":34}],2:[function(require,module,exports){
+=======
+falcor.HttpDataSource = require(117);
+
+module.exports = falcor;
+
+},{"117":117,"122":122,"34":34}],2:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var ModelRoot = require(4);
 var ModelDataSourceAdapter = require(3);
 
-var RequestQueue = require(56);
-var ModelResponse = require(64);
-var CallResponse = require(62);
-var InvalidateResponse = require(63);
+var RequestQueue = require(42);
+var ModelResponse = require(50);
+var CallResponse = require(48);
+var InvalidateResponse = require(49);
 
-var ASAPScheduler = require(76);
-var TimeoutScheduler = require(78);
-var ImmediateScheduler = require(77);
+var ASAPScheduler = require(62);
+var TimeoutScheduler = require(64);
+var ImmediateScheduler = require(63);
 
-var arrayClone = require(84);
-var arraySlice = require(87);
+var arrayClone = require(70);
+var arraySlice = require(73);
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var collectLru = require(52);
 var pathSyntax = require(140);
+=======
+var collectLru = require(38);
+var pathSyntax = require(126);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
-var getSize = require(91);
-var isObject = require(103);
-var isPrimitive = require(105);
-var isJSONEnvelope = require(101);
-var isJSONGraphEnvelope = require(102);
+var getSize = require(77);
+var isObject = require(89);
+var isPrimitive = require(91);
+var isJSONEnvelope = require(87);
+var isJSONGraphEnvelope = require(88);
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var setCache = require(80);
 var setJSONGraphs = require(79);
 var jsong = require(136);
+=======
+var setCache = require(66);
+var setJSONGraphs = require(65);
+var jsong = require(122);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var ID = 0;
-var validateInput = require(118);
+var validateInput = require(104);
 var noOp = function() {};
 var getCache = require(17);
 var get = require(22);
-var GET_VALID_INPUT = require(70);
+var GET_VALID_INPUT = require(56);
 
 module.exports = Model;
 
@@ -158,7 +181,7 @@ Model.prototype._collectRatio = 0.75;
  * @param {...PathSet} path - the path(s) to retrieve
  * @return {ModelResponse.<JSONEnvelope>} - the requested data as JSON
  */
-Model.prototype.get = require(69);
+Model.prototype.get = require(55);
 
 /**
  * The get method retrieves several {@link Path}s or {@link PathSet}s from a {@link Model}. The get method loads each value into a JSON object and returns in a ModelResponse.
@@ -167,14 +190,14 @@ Model.prototype.get = require(69);
  * @param {Array.<PathSet>} paths - the path(s) to retrieve
  * @return {ModelResponse.<JSONEnvelope>} - the requested data as JSON
  */
-Model.prototype._getWithPaths = require(68);
+Model.prototype._getWithPaths = require(54);
 
 /**
  * Sets the value at one or more places in the JSONGraph model. The set method accepts one or more {@link PathValue}s, each of which is a combination of a location in the document and the value to place there.  In addition to accepting  {@link PathValue}s, the set method also returns the values after the set operation is complete.
  * @function
  * @return {ModelResponse.<JSONEnvelope>} - an {@link Observable} stream containing the values in the JSONGraph model after the set was attempted
  */
-Model.prototype.set = require(72);
+Model.prototype.set = require(58);
 
 /**
  * The preload method retrieves several {@link Path}s or {@link PathSet}s from a {@link Model} and loads them into the Model cache.
@@ -351,7 +374,7 @@ Model.prototype.getValue = require(19);
 
  // The code above prints "Jim" to the console.
  */
-Model.prototype.setValue = require(82);
+Model.prototype.setValue = require(68);
 
 // TODO: Does not throw if given a PathSet rather than a Path, not sure if it should or not.
 // TODO: Doc not accurate? I was able to invoke directly against the Model, perhaps because I don't have a data source?
@@ -368,7 +391,7 @@ Model.prototype._getValueSync = require(27);
 /**
  * @private
  */
-Model.prototype._setValueSync = require(83);
+Model.prototype._setValueSync = require(69);
 
 /**
  * @private
@@ -632,15 +655,19 @@ Model.prototype._getValueSync = require(20);
 Model.prototype._getPathValuesAsPathMap = get.getWithPathsAsPathMap;
 Model.prototype._getPathValuesAsJSONG = get.getWithPathsAsJSONGraph;
 
-Model.prototype._setPathValues = require(81);
-Model.prototype._setPathMaps = require(80);
-Model.prototype._setJSONGs = require(79);
-Model.prototype._setCache = require(80);
+Model.prototype._setPathValues = require(67);
+Model.prototype._setPathMaps = require(66);
+Model.prototype._setJSONGs = require(65);
+Model.prototype._setCache = require(66);
 
-Model.prototype._invalidatePathValues = require(51);
-Model.prototype._invalidatePathMaps = require(50);
+Model.prototype._invalidatePathValues = require(37);
+Model.prototype._invalidatePathMaps = require(36);
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"101":101,"102":102,"103":103,"105":105,"118":118,"136":136,"140":140,"16":16,"17":17,"19":19,"20":20,"21":21,"22":22,"27":27,"3":3,"4":4,"5":5,"50":50,"51":51,"52":52,"56":56,"6":6,"62":62,"63":63,"64":64,"68":68,"69":69,"7":7,"70":70,"72":72,"76":76,"77":77,"78":78,"79":79,"80":80,"81":81,"82":82,"83":83,"84":84,"87":87,"91":91}],3:[function(require,module,exports){
+=======
+},{"104":104,"122":122,"126":126,"16":16,"17":17,"19":19,"20":20,"21":21,"22":22,"27":27,"3":3,"36":36,"37":37,"38":38,"4":4,"42":42,"48":48,"49":49,"5":5,"50":50,"54":54,"55":55,"56":56,"58":58,"6":6,"62":62,"63":63,"64":64,"65":65,"66":66,"67":67,"68":68,"69":69,"7":7,"70":70,"73":73,"77":77,"87":87,"88":88,"89":89,"91":91}],3:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 function ModelDataSourceAdapter(model) {
     this._model = model._materialize().boxValues().treatErrorsAsValues();
 }
@@ -661,9 +688,9 @@ ModelDataSourceAdapter.prototype.call = function call(path, args, suffixes, path
 module.exports = ModelDataSourceAdapter;
 
 },{}],4:[function(require,module,exports){
-var isFunction = require(99);
-var hasOwn = require(94);
-var ImmediateScheduler = require(77);
+var isFunction = require(85);
+var hasOwn = require(80);
+var ImmediateScheduler = require(63);
 
 function ModelRoot(o, topLevelModel) {
 
@@ -708,9 +735,9 @@ ModelRoot.prototype.comparator = function comparator(cacheNode, messageNode) {
 
 module.exports = ModelRoot;
 
-},{"77":77,"94":94,"99":99}],5:[function(require,module,exports){
-var __parent = require(42);
-var __invalidated = require(38);
+},{"63":63,"80":80,"85":85}],5:[function(require,module,exports){
+var __parent = require(35).parent;
+var __invalidated = require(35).invalidated;
 module.exports = function fromWhenceYeCame() {
     var reference = this._referenceContainer;
 
@@ -743,17 +770,20 @@ module.exports = function fromWhenceYeCame() {
     return true;
 };
 
-},{"38":38,"42":42}],6:[function(require,module,exports){
+},{"35":35}],6:[function(require,module,exports){
 var InvalidDerefInputError = require(9);
 var getCachePosition = require(18);
 var CONTAINER_DOES_NOT_EXIST = "e";
-var $ref = require(122);
+var $ref = require(108);
+var __path = require(35).path;
+var __refPath = require(35).refPath;
+var __toReference = require(35).toReference;
 
 module.exports = function deref(boundJSONArg) {
 
-    var absolutePath = boundJSONArg && boundJSONArg.$__path;
-    var refPath = boundJSONArg && boundJSONArg.$__refPath;
-    var toReference = boundJSONArg && boundJSONArg.$__toReference;
+    var absolutePath = boundJSONArg && boundJSONArg[__path];
+    var refPath = boundJSONArg && boundJSONArg[__refPath];
+    var toReference = boundJSONArg && boundJSONArg[__toReference];
     var referenceContainer;
 
     // We deref and then ensure that the reference container is attached to
@@ -805,8 +835,13 @@ module.exports = function deref(boundJSONArg) {
     throw new InvalidDerefInputError();
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"122":122,"18":18,"9":9}],7:[function(require,module,exports){
 var pathSyntax = require(140);
+=======
+},{"108":108,"18":18,"35":35,"9":9}],7:[function(require,module,exports){
+var pathSyntax = require(126);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var getBoundValue = require(16);
 var InvalidModelError = require(10);
 
@@ -835,7 +870,11 @@ module.exports = function derefSync(boundPathArg) {
     return this._clone({ _path: path });
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"10":10,"140":140,"16":16}],8:[function(require,module,exports){
+=======
+},{"10":10,"126":126,"16":16}],8:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 /**
  * When a bound model attempts to retrieve JSONGraph it should throw an
  * error.
@@ -976,9 +1015,9 @@ var hardLink = require(29);
 var createHardlink = hardLink.create;
 var onValue = require(25);
 var isExpired = require(30);
-var $ref = require(122);
-var __context = require(36);
-var promote = require(53);
+var $ref = require(108);
+var __context = require(35).context;
+var promote = require(39);
 
 /* eslint-disable no-constant-condition */
 function followReference(model, root, nodeArg, referenceContainerArg,
@@ -1066,7 +1105,7 @@ function followReference(model, root, nodeArg, referenceContainerArg,
 
 module.exports = followReference;
 
-},{"122":122,"25":25,"29":29,"30":30,"36":36,"53":53}],15:[function(require,module,exports){
+},{"108":108,"25":25,"29":29,"30":30,"35":35,"39":39}],15:[function(require,module,exports){
 var getCachePosition = require(18);
 var InvalidModelError = require(10);
 var BoundJSONGraphModelError = require(8);
@@ -1179,9 +1218,9 @@ module.exports = function getBoundValue(model, pathArg, materialized) {
 };
 
 },{"10":10,"20":20}],17:[function(require,module,exports){
-var $modelCreated = require(40);
+var $modelCreated = require(35).modelCreated;
 var clone = require(28);
-var isInternalKey = require(100);
+var isInternalKey = require(86);
 
 /**
  * decends and copies the cache.
@@ -1234,7 +1273,7 @@ function _copyCache(node, out, fromKey) {
         });
 }
 
-},{"100":100,"28":28,"40":40}],18:[function(require,module,exports){
+},{"28":28,"35":35,"86":86}],18:[function(require,module,exports){
 /**
  * getCachePosition makes a fast walk to the bound value since all bound
  * paths are the most possible optimized path.
@@ -1261,8 +1300,13 @@ module.exports = function getCachePosition(model, path) {
 };
 
 },{}],19:[function(require,module,exports){
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var ModelResponse = require(64);
 var pathSyntax = require(140);
+=======
+var ModelResponse = require(50);
+var pathSyntax = require(126);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = function getValue(path) {
     var parsedPath = pathSyntax.fromPath(path);
@@ -1297,14 +1341,18 @@ module.exports = function getValue(path) {
     });
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"140":140,"64":64}],20:[function(require,module,exports){
+=======
+},{"126":126,"50":50}],20:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var followReference = require(14);
 var clone = require(28);
 var isExpired = require(30);
-var promote = require(53);
-var $ref = require(122);
-var $atom = require(120);
-var $error = require(121);
+var promote = require(39);
+var $ref = require(108);
+var $atom = require(106);
+var $error = require(107);
 
 module.exports = function getValueSync(model, simplePath, noClone) {
     var root = model._root.cache;
@@ -1417,8 +1465,8 @@ module.exports = function getValueSync(model, simplePath, noClone) {
     };
 };
 
-},{"120":120,"121":121,"122":122,"14":14,"28":28,"30":30,"53":53}],21:[function(require,module,exports){
-var __version = require(49);
+},{"106":106,"107":107,"108":108,"14":14,"28":28,"30":30,"39":39}],21:[function(require,module,exports){
+var __version = require(35).version;
 
 module.exports = function _getVersion(model, path) {
     // ultra fast clone for boxed values.
@@ -1431,7 +1479,7 @@ module.exports = function _getVersion(model, path) {
     return (version == null) ? -1 : version;
 };
 
-},{"49":49}],22:[function(require,module,exports){
+},{"35":35}],22:[function(require,module,exports){
 var get = require(15);
 var walkPath = require(33);
 
@@ -1446,7 +1494,7 @@ module.exports = {
 };
 
 },{"15":15,"16":16,"20":20,"33":33}],23:[function(require,module,exports){
-var promote = require(53);
+var promote = require(39);
 var clone = require(28);
 
 module.exports = function onError(model, node, depth,
@@ -1466,7 +1514,7 @@ module.exports = function onError(model, node, depth,
     promote(model._root, node);
 };
 
-},{"28":28,"53":53}],24:[function(require,module,exports){
+},{"28":28,"39":39}],24:[function(require,module,exports){
 var support = require(32);
 var fastCopy = support.fastCopy;
 
@@ -1503,12 +1551,12 @@ function concatAndInsertMissing(model, remainingPath, depth, requestedPath,
 }
 
 },{"32":32}],25:[function(require,module,exports){
-var promote = require(53);
+var promote = require(39);
 var clone = require(28);
-var $ref = require(122);
-var $atom = require(120);
-var $error = require(121);
-var $modelCreated = require(40);
+var $ref = require(108);
+var $atom = require(106);
+var $error = require(107);
+var $modelCreated = require(35).modelCreated;
 
 module.exports = function onValue(model, node, seed, depth, outerResults,
                                   branchInfo, requestedPath, optimizedPath,
@@ -1626,15 +1674,15 @@ module.exports = function onValue(model, node, seed, depth, outerResults,
     }
 };
 
-},{"120":120,"121":121,"122":122,"28":28,"40":40,"53":53}],26:[function(require,module,exports){
+},{"106":106,"107":107,"108":108,"28":28,"35":35,"39":39}],26:[function(require,module,exports){
 var isExpired = require(30);
-var $error = require(121);
+var $error = require(107);
 var onError = require(23);
 var onValue = require(25);
 var onMissing = require(24);
 var isMaterialized = require(31);
-var __invalidated = require(38);
-var expireNode = require(89);
+var __invalidated = require(35).invalidated;
+var expireNode = require(75);
 
 /**
  * When we land on a valueType (or nothing) then we need to report it out to
@@ -1704,8 +1752,13 @@ module.exports = function onValueType(
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"121":121,"23":23,"24":24,"25":25,"30":30,"31":31,"38":38,"89":89}],27:[function(require,module,exports){
 var pathSyntax = require(140);
+=======
+},{"107":107,"23":23,"24":24,"25":25,"30":30,"31":31,"35":35,"75":75}],27:[function(require,module,exports){
+var pathSyntax = require(126);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = function getValueSync(pathArg) {
     var path = pathSyntax.fromPath(pathArg);
@@ -1718,10 +1771,21 @@ module.exports = function getValueSync(pathArg) {
     return this._syncCheck("getValueSync") && this._getValueSync(this, path).value;
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"140":140}],28:[function(require,module,exports){
+=======
+},{"126":126}],28:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 // Copies the node
-var prefix = require(43);
-var $absolutePath = require(35);
+var prefix = require(35).prefix;
+var includedInternalKeys = {};
+var internalKeys = require(35);
+includedInternalKeys[internalKeys.path] = true;
+includedInternalKeys[internalKeys.refPath] = true;
+includedInternalKeys[internalKeys.toReference] = true;
+
+var excludedMetadataKeys = {};
+excludedMetadataKeys[internalKeys.size] = true;
 
 module.exports = function clone(node) {
     var outValue, i, len;
@@ -1729,7 +1793,10 @@ module.exports = function clone(node) {
     outValue = {};
     for (i = 0, len = keys.length; i < len; i++) {
         var k = keys[i];
-        if (k[0] === prefix || k === $absolutePath) {
+        var ch = k.charAt(0);
+        if (ch === prefix && !includedInternalKeys[k]) {
+            continue;
+        } else if (ch === "$" && excludedMetadataKeys[k]) {
             continue;
         }
         outValue[k] = node[k];
@@ -1738,11 +1805,11 @@ module.exports = function clone(node) {
 };
 
 
-},{"35":35,"43":43}],29:[function(require,module,exports){
-var __ref = require(46);
-var __context = require(36);
-var __refIndex = require(45);
-var __refsLength = require(47);
+},{"35":35}],29:[function(require,module,exports){
+var __ref = require(35).ref;
+var __context = require(35).context;
+var __refIndex = require(35).refIndex;
+var __refsLength = require(35).refsLength;
 
 function createHardlink(from, to) {
 
@@ -1760,14 +1827,14 @@ module.exports = {
     create: createHardlink
 };
 
-},{"36":36,"45":45,"46":46,"47":47}],30:[function(require,module,exports){
-var now = require(109);
+},{"35":35}],30:[function(require,module,exports){
+var now = require(95);
 module.exports = function isExpired(node) {
     var $expires = node.$expires === void 0 && -1 || node.$expires;
     return $expires !== -1 && $expires !== 1 && ($expires === 0 || $expires < now());
 };
 
-},{"109":109}],31:[function(require,module,exports){
+},{"95":95}],31:[function(require,module,exports){
 module.exports = function isMaterialized(model) {
     return model._materialized && !model._source;
 };
@@ -1805,11 +1872,21 @@ var followReference = require(14);
 var onValueType = require(26);
 var onValue = require(25);
 var isExpired = require(30);
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var iterateKeySet = require(149).iterateKeySet;
 var $ref = require(122);
+=======
+var isObject = require(89);
+var iterateKeySet = require(135).iterateKeySet;
+var $ref = require(108);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var NullInPathError = require(13);
-var promote = require(53);
-var $absolutePath = require(35);
+var promote = require(39);
+var __path = require(35).path;
+var __refPath = require(35).refPath;
+var __toReference = require(35).toReference;
+var __absolutePath = require(35).absolutePath;
+var isArray = Array.isArray;
 
 module.exports = function walkPath(model, root, curr, path, depth, seed,
                                    outerResults, branchInfo, requestedPath,
@@ -1918,24 +1995,25 @@ module.exports = function walkPath(model, root, curr, path, depth, seed,
             // The next can be set to undefined by following a reference that
             // does not exist.
             if (next) {
-                var obj;
+                var obj = {};
+                var tmpPath = next[__absolutePath];
 
-                // There was a reference container.
-                if (referenceContainer && allowFromWhenceYouCame) {
-                    obj = {
-                        $__path: next[$absolutePath],
-                        $__refPath: referenceContainer.value,
-                        $__toReference: referenceContainer[$absolutePath]
-                    };
+                if (isArray(tmpPath)) {
+                    obj[__path] = tmpPath.slice(0);
                 }
 
-                // There is no reference container meaning this request was
-                // neither from a model and/or the first n (depth) keys do not
-                // contain references.
-                else {
-                    obj = {
-                        $__path: next.$absolutePath
-                    };
+                // If there was a reference container, then this request was either
+                // from a Model, or the first n (depth) keys do not contain references,
+                // or both.
+                if (isObject(referenceContainer) && allowFromWhenceYouCame) {
+                    tmpPath = referenceContainer.value;
+                    if (isArray(tmpPath)) {
+                        obj[__refPath] = tmpPath.slice(0);
+                    }
+                    tmpPath = referenceContainer[__absolutePath];
+                    if (isArray(tmpPath)) {
+                        obj[__toReference] = tmpPath.slice(0);
+                    }
                 }
 
                 branchInfo[depth] = obj;
@@ -1956,7 +2034,11 @@ module.exports = function walkPath(model, root, curr, path, depth, seed,
     } while (iteratorNote && !iteratorNote.done);
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"122":122,"13":13,"14":14,"149":149,"25":25,"26":26,"30":30,"35":35,"53":53}],34:[function(require,module,exports){
+=======
+},{"108":108,"13":13,"135":135,"14":14,"25":25,"26":26,"30":30,"35":35,"39":39,"89":89}],34:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 "use strict";
 
 function falcor(opts) {
@@ -1966,13 +2048,18 @@ function falcor(opts) {
 if (typeof Promise === "function") {
     falcor.Promise = Promise;
 } else {
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
     falcor.Promise = require(156);
+=======
+    falcor.Promise = require(142);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 }
 
 module.exports = falcor;
 
 falcor.Model = require(2);
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"156":156,"2":2}],35:[function(require,module,exports){
 module.exports = "$absolutePath";
 
@@ -1998,55 +2085,66 @@ module.exports = require(43) + "next";
 module.exports = require(43) + "parent";
 
 },{"43":43}],43:[function(require,module,exports){
+=======
+},{"142":142,"2":2}],35:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 /**
+ * The list of internal keys.  Instead of a bunch of little files,
+ * have them as one exports.  This makes the bundling overhead smaller!
+ *
  * http://en.wikipedia.org/wiki/Delimiter#ASCIIDelimitedText
  * record separator character.
  */
-module.exports = String.fromCharCode(30);
+var prefix = String.fromCharCode(30);
 
-},{}],44:[function(require,module,exports){
-module.exports = require(43) + "prev";
+module.exports = {
+    prefix:        prefix,
+    absolutePath:  prefix + "absolutePath",
+    context:       prefix + "context",
+    head:          prefix + "head",
+    invalidated:   prefix + "invalidated",
+    key:           prefix + "key",
+    next:          prefix + "next",
+    offset:        prefix + "offset",
+    path:          prefix + "path",
+    parent:        prefix + "parent",
+    prev:          prefix + "prev",
+    refIndex:      prefix + "refIndex",
+    ref:           prefix + "ref",
+    refPath:       prefix + "refPath",
+    refsLength:    prefix + "refsLength",
+    tail:          prefix + "tail",
+    toReference:   prefix + "toReference",
+    version:       prefix + "version",
+    size:          "$size",
+    modelCreated:  "$modelCreated"
+};
 
-},{"43":43}],45:[function(require,module,exports){
-module.exports = require(43) + "ref-index";
+},{}],36:[function(require,module,exports){
+var __key = require(35).key;
+var __ref = require(35).ref;
+var __prefix = require(35).prefix;
+var __parent = require(35).parent;
+var __context = require(35).context;
+var __version = require(35).version;
+var __refIndex = require(35).refIndex;
+var __refsLength = require(35).refsLength;
 
-},{"43":43}],46:[function(require,module,exports){
-module.exports = require(43) + "ref";
-
-},{"43":43}],47:[function(require,module,exports){
-module.exports = require(43) + "refs-length";
-
-},{"43":43}],48:[function(require,module,exports){
-module.exports = require(43) + "tail";
-
-},{"43":43}],49:[function(require,module,exports){
-module.exports = require(43) + "version";
-
-},{"43":43}],50:[function(require,module,exports){
-var __key = require(39);
-var __ref = require(46);
-var __prefix = require(43);
-var __parent = require(42);
-var __context = require(36);
-var __version = require(49);
-var __refIndex = require(45);
-var __refsLength = require(47);
-
-var $ref = require(122);
+var $ref = require(108);
 
 var getBoundValue = require(16);
 
-var promote = require(53);
-var getSize = require(91);
-var hasOwn = require(94);
-var isObject = require(103);
-var isExpired = require(98);
-var isFunction = require(99);
-var isPrimitive = require(105);
-var expireNode = require(89);
-var incrementVersion = require(95);
-var updateNodeAncestors = require(117);
-var removeNodeAndDescendants = require(111);
+var promote = require(39);
+var getSize = require(77);
+var hasOwn = require(80);
+var isObject = require(89);
+var isExpired = require(84);
+var isFunction = require(85);
+var isPrimitive = require(91);
+var expireNode = require(75);
+var incrementVersion = require(81);
+var updateNodeAncestors = require(103);
+var removeNodeAndDescendants = require(97);
 
 /**
  * Sets a list of PathMaps into a JSON Graph.
@@ -2212,19 +2310,20 @@ function invalidateNode(
     return [node, parent];
 }
 
-},{"103":103,"105":105,"111":111,"117":117,"122":122,"16":16,"36":36,"39":39,"42":42,"43":43,"45":45,"46":46,"47":47,"49":49,"53":53,"89":89,"91":91,"94":94,"95":95,"98":98,"99":99}],51:[function(require,module,exports){
-var __key = require(39);
-var __ref = require(46);
-var __parent = require(42);
-var __context = require(36);
-var __version = require(49);
-var __refIndex = require(45);
-var __refsLength = require(47);
+},{"103":103,"108":108,"16":16,"35":35,"39":39,"75":75,"77":77,"80":80,"81":81,"84":84,"85":85,"89":89,"91":91,"97":97}],37:[function(require,module,exports){
+var __key = require(35).key;
+var __ref = require(35).ref;
+var __parent = require(35).parent;
+var __context = require(35).context;
+var __version = require(35).version;
+var __refIndex = require(35).refIndex;
+var __refsLength = require(35).refsLength;
 
-var $ref = require(122);
+var $ref = require(108);
 
 var getBoundValue = require(16);
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var promote = require(53);
 var getSize = require(91);
 var isExpired = require(98);
@@ -2235,6 +2334,18 @@ var iterateKeySet = require(149).iterateKeySet;
 var incrementVersion = require(95);
 var updateNodeAncestors = require(117);
 var removeNodeAndDescendants = require(111);
+=======
+var promote = require(39);
+var getSize = require(77);
+var isExpired = require(84);
+var isFunction = require(85);
+var isPrimitive = require(91);
+var expireNode = require(75);
+var iterateKeySet = require(135).iterateKeySet;
+var incrementVersion = require(81);
+var updateNodeAncestors = require(103);
+var removeNodeAndDescendants = require(97);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * Invalidates a list of Paths in a JSON Graph.
@@ -2398,17 +2509,23 @@ function invalidateNode(
     return [node, parent];
 }
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"105":105,"111":111,"117":117,"122":122,"149":149,"16":16,"36":36,"39":39,"42":42,"45":45,"46":46,"47":47,"49":49,"53":53,"89":89,"91":91,"95":95,"98":98,"99":99}],52:[function(require,module,exports){
 var __key = require(39);
 var __parent = require(42);
+=======
+},{"103":103,"108":108,"135":135,"16":16,"35":35,"39":39,"75":75,"77":77,"81":81,"84":84,"85":85,"91":91,"97":97}],38:[function(require,module,exports){
+var __key = require(35).key;
+var __parent = require(35).parent;
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
-var __head = require(37);
-var __tail = require(48);
-var __next = require(41);
-var __prev = require(44);
+var __head = require(35).head;
+var __tail = require(35).tail;
+var __next = require(35).next;
+var __prev = require(35).prev;
 
-var removeNode = require(110);
-var updateNodeAncestors = require(117);
+var removeNode = require(96);
+var updateNodeAncestors = require(103);
 
 module.exports = function collect(lru, expired, totalArg, max, ratioArg, version) {
 
@@ -2458,12 +2575,12 @@ module.exports = function collect(lru, expired, totalArg, max, ratioArg, version
     }
 };
 
-},{"110":110,"117":117,"37":37,"39":39,"41":41,"42":42,"44":44,"48":48}],53:[function(require,module,exports){
-var __head = require(37);
-var __tail = require(48);
-var __next = require(41);
-var __prev = require(44);
-var EXPIRES_NEVER = require(123);
+},{"103":103,"35":35,"96":96}],39:[function(require,module,exports){
+var __head = require(35).head;
+var __tail = require(35).tail;
+var __next = require(35).next;
+var __prev = require(35).prev;
+var EXPIRES_NEVER = require(109);
 
 // [H] -> Next -> ... -> [T]
 // [T] -> Prev -> ... -> [H]
@@ -2508,11 +2625,11 @@ module.exports = function lruPromote(root, object) {
     }
 };
 
-},{"123":123,"37":37,"41":41,"44":44,"48":48}],54:[function(require,module,exports){
-var __head = require(37);
-var __tail = require(48);
-var __next = require(41);
-var __prev = require(44);
+},{"109":109,"35":35}],40:[function(require,module,exports){
+var __head = require(35).head;
+var __tail = require(35).tail;
+var __next = require(35).next;
+var __prev = require(35).prev;
 
 module.exports = function lruSplice(root, object) {
 
@@ -2535,14 +2652,14 @@ module.exports = function lruSplice(root, object) {
     }
 };
 
-},{"37":37,"41":41,"44":44,"48":48}],55:[function(require,module,exports){
-var complement = require(58);
-var flushGetRequest = require(59);
+},{"35":35}],41:[function(require,module,exports){
+var complement = require(44);
+var flushGetRequest = require(45);
 var REQUEST_ID = 0;
-var GetRequestType = require(57).GetRequest;
-var setJSONGraphs = require(79);
-var setPathValues = require(81);
-var $error = require(121);
+var GetRequestType = require(43).GetRequest;
+var setJSONGraphs = require(65);
+var setPathValues = require(67);
+var $error = require(107);
 var emptyArray = [];
 var InvalidSourceError = require(11);
 
@@ -2778,11 +2895,19 @@ function flattenRequestedPaths(requested) {
 
 module.exports = GetRequestV2;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"11":11,"121":121,"57":57,"58":58,"59":59,"79":79,"81":81}],56:[function(require,module,exports){
 var RequestTypes = require(57);
 var sendSetRequest = require(60);
 var GetRequest = require(55);
 var falcorPathUtils = require(149);
+=======
+},{"107":107,"11":11,"43":43,"44":44,"45":45,"65":65,"67":67}],42:[function(require,module,exports){
+var RequestTypes = require(43);
+var sendSetRequest = require(46);
+var GetRequest = require(41);
+var falcorPathUtils = require(135);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * The request queue is responsible for queuing the operations to
@@ -2931,14 +3056,24 @@ RequestQueueV2.prototype = {
 
 module.exports = RequestQueueV2;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"149":149,"55":55,"57":57,"60":60}],57:[function(require,module,exports){
+=======
+},{"135":135,"41":41,"43":43,"46":46}],43:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 module.exports = {
     GetRequest: "GET"
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],58:[function(require,module,exports){
 var hasIntersection = require(149).hasIntersection;
 var arraySlice = require(87);
+=======
+},{}],44:[function(require,module,exports){
+var hasIntersection = require(135).hasIntersection;
+var arraySlice = require(73);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * creates the complement of the requested and optimized paths
@@ -2988,8 +3123,13 @@ module.exports = function complement(requested, optimized, tree) {
     return [requestedIntersection, optimizedComplement, requestedComplement ];
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"149":149,"87":87}],59:[function(require,module,exports){
 var pathUtils = require(149);
+=======
+},{"135":135,"73":73}],45:[function(require,module,exports){
+var pathUtils = require(135);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var toTree = pathUtils.toTree;
 var toPaths = pathUtils.toPaths;
 var InvalidSourceError = require(11);
@@ -3078,10 +3218,17 @@ module.exports = function flushGetRequest(request, listOfPaths, callback) {
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"11":11,"149":149}],60:[function(require,module,exports){
 var arrayMap = require(86);
 var setJSONGraphs = require(79);
 var setPathValues = require(81);
+=======
+},{"11":11,"135":135}],46:[function(require,module,exports){
+var arrayMap = require(72);
+var setJSONGraphs = require(65);
+var setPathValues = require(67);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var InvalidSourceError = require(11);
 
 var emptyArray = [];
@@ -3161,7 +3308,7 @@ var sendSetRequest = function(originalJsonGraph, model, callback) {
 
 module.exports = sendSetRequest;
 
-},{"11":11,"79":79,"81":81,"86":86}],61:[function(require,module,exports){
+},{"11":11,"65":65,"67":67,"72":72}],47:[function(require,module,exports){
 /**
  * Will allow for state tracking of the current disposable.  Also fulfills the
  * disposable interface.
@@ -3201,13 +3348,18 @@ AssignableDisposable.prototype = {
 
 module.exports = AssignableDisposable;
 
-},{}],62:[function(require,module,exports){
-var ModelResponse = require(64);
+},{}],48:[function(require,module,exports){
+var ModelResponse = require(50);
 var InvalidSourceError = require(11);
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var SetResponse = require(71);
 var pathSyntax = require(140);
 var __version = require(49);
 var incrementVersion = require(95);
+=======
+
+var pathSyntax = require(126);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * @private
@@ -3300,11 +3452,15 @@ CallResponse.prototype._subscribe = function _subscribe(observer) {
 
 module.exports = CallResponse;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"11":11,"140":140,"49":49,"64":64,"71":71,"95":95}],63:[function(require,module,exports){
+=======
+},{"11":11,"126":126,"50":50}],49:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var isArray = Array.isArray;
-var ModelResponse = require(64);
-var isPathValue = require(104);
-var isJSONEnvelope = require(101);
+var ModelResponse = require(50);
+var isPathValue = require(90);
+var isJSONEnvelope = require(87);
 var empty = {dispose: function() {}};
 var __version = require(49);
 var isFunction = require(99);
@@ -3398,9 +3554,13 @@ InvalidateResponse.prototype._subscribe = function _subscribe(observer) {
 
 module.exports = InvalidateResponse;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"101":101,"104":104,"49":49,"64":64,"95":95,"99":99}],64:[function(require,module,exports){
+=======
+},{"50":50,"87":87,"90":90}],50:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var falcor = require(34);
-var noop = require(108);
+var noop = require(94);
 
 /**
  * A ModelResponse is a container for the results of a get, set, or call operation performed on a Model. The ModelResponse provides methods which can be used to specify the output format of the data retrieved from a Model, as well as how that data is delivered.
@@ -3526,16 +3686,22 @@ ModelResponse.prototype.then = function then(onNext, onError) {
 
 module.exports = ModelResponse;
 
-},{"108":108,"34":34}],65:[function(require,module,exports){
-var ModelResponse = require(64);
-var checkCacheAndReport = require(66);
-var getRequestCycle = require(67);
+},{"34":34,"94":94}],51:[function(require,module,exports){
+var ModelResponse = require(50);
+var checkCacheAndReport = require(52);
+var getRequestCycle = require(53);
 var empty = {dispose: function() {}};
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var __version = require(49);
 var collectLru = require(52);
 var getSize = require(91);
 var isFunction = require(99);
 var incrementVersion = require(95);
+=======
+var __version = require(35).version;
+var collectLru = require(38);
+var getSize = require(77);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * The get response.  It takes in a model and paths and starts
@@ -3637,7 +3803,11 @@ GetResponse.prototype._subscribe = function _subscribe(observer) {
                            observer, seed, errors, 1, this.initialCacheVersion);
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"49":49,"52":52,"64":64,"66":66,"67":67,"91":91,"95":95,"99":99}],66:[function(require,module,exports){
+=======
+},{"35":35,"38":38,"50":50,"52":52,"53":53,"77":77}],52:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var gets = require(22);
 var getWithPathsAsJSONGraph = gets.getWithPathsAsJSONGraph;
 var getWithPathsAsPathMap = gets.getWithPathsAsPathMap;
@@ -3719,14 +3889,14 @@ module.exports = function checkCacheAndReport(model, requestedPaths, observer,
     return results;
 };
 
-},{"22":22}],67:[function(require,module,exports){
-var checkCacheAndReport = require(66);
+},{"22":22}],53:[function(require,module,exports){
+var checkCacheAndReport = require(52);
 var MaxRetryExceededError = require(12);
 var fastCat = require(32).fastCat;
-var collectLru = require(52);
-var getSize = require(91);
-var AssignableDisposable = require(61);
-var __version = require(49);
+var collectLru = require(38);
+var getSize = require(77);
+var AssignableDisposable = require(47);
+var __version = require(35).version;
 var InvalidSourceError = require(11);
 var isFunction = require(99);
 
@@ -3823,8 +3993,13 @@ module.exports = function getRequestCycle(getResponse, model, results, observer,
     return disposable;
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"11":11,"12":12,"32":32,"49":49,"52":52,"61":61,"66":66,"91":91,"99":99}],68:[function(require,module,exports){
 var GetResponse = require(65);
+=======
+},{"11":11,"12":12,"32":32,"35":35,"38":38,"47":47,"52":52,"77":77}],54:[function(require,module,exports){
+var GetResponse = require(51);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * Performs a get on the cache and if there are missing paths
@@ -3835,12 +4010,21 @@ module.exports = function getWithPaths(paths) {
     return new GetResponse(this, paths);
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"65":65}],69:[function(require,module,exports){
 var pathSyntax = require(140);
 var ModelResponse = require(64);
 var GET_VALID_INPUT = require(70);
 var validateInput = require(118);
 var GetResponse = require(65);
+=======
+},{"51":51}],55:[function(require,module,exports){
+var pathSyntax = require(126);
+var ModelResponse = require(50);
+var GET_VALID_INPUT = require(56);
+var validateInput = require(104);
+var GetResponse = require(51);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * Performs a get on the cache and if there are missing paths
@@ -3861,12 +4045,17 @@ module.exports = function get() {
     return new GetResponse(this, paths);
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"118":118,"140":140,"64":64,"65":65,"70":70}],70:[function(require,module,exports){
+=======
+},{"104":104,"126":126,"50":50,"51":51,"56":56}],56:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 module.exports = {
     path: true,
     pathSyntax: true
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],71:[function(require,module,exports){
 var ModelResponse = require(64);
 var pathSyntax = require(140);
@@ -3877,6 +4066,16 @@ var isJSONEnvelope = require(101);
 var setRequestCycle = require(74);
 var __version = require(49);
 var incrementVersion = require(95);
+=======
+},{}],57:[function(require,module,exports){
+var ModelResponse = require(50);
+var pathSyntax = require(126);
+var isArray = Array.isArray;
+var isPathValue = require(90);
+var isJSONGraphEnvelope = require(88);
+var isJSONEnvelope = require(87);
+var setRequestCycle = require(60);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  *  The set response is responsible for doing the request loop for the set
@@ -3991,11 +4190,19 @@ SetResponse.prototype.progressively = function progressively() {
                            this._isJSONGraph, true, this.initialCacheVersion);
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"101":101,"102":102,"104":104,"140":140,"49":49,"64":64,"74":74,"95":95}],72:[function(require,module,exports){
 var setValidInput = require(75);
 var validateInput = require(118);
 var SetResponse = require(71);
 var ModelResponse = require(64);
+=======
+},{"126":126,"50":50,"60":60,"87":87,"88":88,"90":90}],58:[function(require,module,exports){
+var setValidInput = require(61);
+var validateInput = require(104);
+var SetResponse = require(57);
+var ModelResponse = require(50);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = function set() {
     var out = validateInput(arguments, setValidInput, "set");
@@ -4014,8 +4221,8 @@ module.exports = function set() {
     return new SetResponse(this, args);
 };
 
-},{"118":118,"64":64,"71":71,"75":75}],73:[function(require,module,exports){
-var arrayFlatMap = require(85);
+},{"104":104,"50":50,"57":57,"61":61}],59:[function(require,module,exports){
+var arrayFlatMap = require(71);
 
 /**
  * Takes the groups that are created in the SetResponse constructor and sets
@@ -4069,11 +4276,11 @@ function pluckEnvelopePaths(jsonGraphEnvelope) {
     return jsonGraphEnvelope.paths;
 }
 
-},{"85":85}],74:[function(require,module,exports){
+},{"71":71}],60:[function(require,module,exports){
 var emptyArray = [];
-var AssignableDisposable = require(61);
-var GetResponse = require(65);
-var setGroupsIntoCache = require(73);
+var AssignableDisposable = require(47);
+var GetResponse = require(51);
+var setGroupsIntoCache = require(59);
 var getWithPathsAsPathMap = require(22).getWithPathsAsPathMap;
 var InvalidSourceError = require(11);
 var MaxRetryExceededError = require(12);
@@ -4179,7 +4386,7 @@ function subscribeToFollowupGet(model, observer, requestedPaths, isJSONGraph,
     return response.subscribe(observer);
 }
 
-},{"11":11,"12":12,"22":22,"61":61,"65":65,"73":73}],75:[function(require,module,exports){
+},{"11":11,"12":12,"22":22,"47":47,"51":51,"59":59}],61:[function(require,module,exports){
 module.exports = {
     pathValue: true,
     pathSyntax: true,
@@ -4188,8 +4395,8 @@ module.exports = {
 };
 
 
-},{}],76:[function(require,module,exports){
-var asap = require(125);
+},{}],62:[function(require,module,exports){
+var asap = require(111);
 var empty = {dispose: function() {}};
 
 function ASAPScheduler() {}
@@ -4209,7 +4416,7 @@ ASAPScheduler.prototype.scheduleWithState = function scheduleWithState(state, ac
 
 module.exports = ASAPScheduler;
 
-},{"125":125}],77:[function(require,module,exports){
+},{"111":111}],63:[function(require,module,exports){
 var empty = {dispose: function() {}};
 
 function ImmediateScheduler() {}
@@ -4226,7 +4433,7 @@ ImmediateScheduler.prototype.scheduleWithState = function scheduleWithState(stat
 
 module.exports = ImmediateScheduler;
 
-},{}],78:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 function TimeoutScheduler(delay) {
     this.delay = delay;
 }
@@ -4260,6 +4467,7 @@ TimerDisposable.prototype.dispose = function() {
 
 module.exports = TimeoutScheduler;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],79:[function(require,module,exports){
 var __key = require(39);
 var __ref = require(46);
@@ -4278,6 +4486,26 @@ var expireNode = require(89);
 var iterateKeySet = require(149).iterateKeySet;
 var incrementVersion = require(95);
 var mergeJSONGraphNode = require(106);
+=======
+},{}],65:[function(require,module,exports){
+var __key = require(35).key;
+var __ref = require(35).ref;
+var __context = require(35).context;
+var __version = require(35).version;
+var __refIndex = require(35).refIndex;
+var __refsLength = require(35).refsLength;
+
+var $ref = require(108);
+
+var promote = require(39);
+var isExpired = require(83);
+var isFunction = require(85);
+var isPrimitive = require(91);
+var expireNode = require(75);
+var iterateKeySet = require(135).iterateKeySet;
+var incrementVersion = require(81);
+var mergeJSONGraphNode = require(92);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var NullInPathError = require(13);
 
 /**
@@ -4491,6 +4719,7 @@ function setNode(
     return [node, parent, message, messageParent];
 }
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"105":105,"106":106,"122":122,"13":13,"149":149,"36":36,"39":39,"45":45,"46":46,"47":47,"49":49,"53":53,"89":89,"95":95,"97":97,"99":99}],80:[function(require,module,exports){
 var __key = require(39);
 var __ref = require(46);
@@ -4500,21 +4729,32 @@ var __context = require(36);
 var __version = require(49);
 var __refIndex = require(45);
 var __refsLength = require(47);
+=======
+},{"108":108,"13":13,"135":135,"35":35,"39":39,"75":75,"81":81,"83":83,"85":85,"91":91,"92":92}],66:[function(require,module,exports){
+var __key = require(35).key;
+var __ref = require(35).ref;
+var __prefix = require(35).prefix;
+var __parent = require(35).parent;
+var __context = require(35).context;
+var __version = require(35).version;
+var __refIndex = require(35).refIndex;
+var __refsLength = require(35).refsLength;
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
-var $ref = require(122);
+var $ref = require(108);
 
 var getBoundValue = require(16);
 
 var isArray = Array.isArray;
-var promote = require(53);
-var hasOwn = require(94);
-var isObject = require(103);
-var isExpired = require(98);
-var isFunction = require(99);
-var isPrimitive = require(105);
-var expireNode = require(89);
-var incrementVersion = require(95);
-var mergeValueOrInsertBranch = require(107);
+var promote = require(39);
+var hasOwn = require(80);
+var isObject = require(89);
+var isExpired = require(84);
+var isFunction = require(85);
+var isPrimitive = require(91);
+var expireNode = require(75);
+var incrementVersion = require(81);
+var mergeValueOrInsertBranch = require(93);
 var NullInPathError = require(13);
 
 /**
@@ -4747,19 +4987,20 @@ function getKeys(pathMap) {
     return void 0;
 }
 
-},{"103":103,"105":105,"107":107,"122":122,"13":13,"16":16,"36":36,"39":39,"42":42,"43":43,"45":45,"46":46,"47":47,"49":49,"53":53,"89":89,"94":94,"95":95,"98":98,"99":99}],81:[function(require,module,exports){
-var __key = require(39);
-var __ref = require(46);
-var __parent = require(42);
-var __context = require(36);
-var __version = require(49);
-var __refIndex = require(45);
-var __refsLength = require(47);
+},{"108":108,"13":13,"16":16,"35":35,"39":39,"75":75,"80":80,"81":81,"84":84,"85":85,"89":89,"91":91,"93":93}],67:[function(require,module,exports){
+var __key = require(35).key;
+var __ref = require(35).ref;
+var __parent = require(35).parent;
+var __context = require(35).context;
+var __version = require(35).version;
+var __refIndex = require(35).refIndex;
+var __refsLength = require(35).refsLength;
 
-var $ref = require(122);
+var $ref = require(108);
 
 var getBoundValue = require(16);
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var promote = require(53);
 var isExpired = require(98);
 var isFunction = require(99);
@@ -4768,6 +5009,16 @@ var expireNode = require(89);
 var iterateKeySet = require(149).iterateKeySet;
 var incrementVersion = require(95);
 var mergeValueOrInsertBranch = require(107);
+=======
+var promote = require(39);
+var isExpired = require(84);
+var isFunction = require(85);
+var isPrimitive = require(91);
+var expireNode = require(75);
+var iterateKeySet = require(135).iterateKeySet;
+var incrementVersion = require(81);
+var mergeValueOrInsertBranch = require(93);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var NullInPathError = require(13);
 
 /**
@@ -4979,10 +5230,17 @@ function setNode(
     return [node, parent];
 }
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"105":105,"107":107,"122":122,"13":13,"149":149,"16":16,"36":36,"39":39,"42":42,"45":45,"46":46,"47":47,"49":49,"53":53,"89":89,"95":95,"98":98,"99":99}],82:[function(require,module,exports){
 var jsong = require(136);
 var ModelResponse = require(64);
 var isPathValue = require(104);
+=======
+},{"108":108,"13":13,"135":135,"16":16,"35":35,"39":39,"75":75,"81":81,"84":84,"85":85,"91":91,"93":93}],68:[function(require,module,exports){
+var jsong = require(122);
+var ModelResponse = require(50);
+var isPathValue = require(90);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = function setValue(pathArg, valueArg) {
     var value = isPathValue(pathArg) ? pathArg : jsong.pathValue(pathArg, valueArg);
@@ -5017,10 +5275,17 @@ module.exports = function setValue(pathArg, valueArg) {
     });
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"104":104,"136":136,"64":64}],83:[function(require,module,exports){
 var pathSyntax = require(140);
 var isPathValue = require(104);
 var setPathValues = require(81);
+=======
+},{"122":122,"50":50,"90":90}],69:[function(require,module,exports){
+var pathSyntax = require(126);
+var isPathValue = require(90);
+var setPathValues = require(67);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = function setValueSync(pathArg, valueArg, errorSelectorArg, comparatorArg) {
 
@@ -5058,7 +5323,11 @@ module.exports = function setValueSync(pathArg, valueArg, errorSelectorArg, comp
     }
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"104":104,"140":140,"81":81}],84:[function(require,module,exports){
+=======
+},{"126":126,"67":67,"90":90}],70:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 module.exports = function arrayClone(array) {
     if (!array) {
         return array;
@@ -5072,7 +5341,7 @@ module.exports = function arrayClone(array) {
     return array2;
 };
 
-},{}],85:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 module.exports = function arrayFlatMap(array, selector) {
     var index = -1;
     var i = -1;
@@ -5089,7 +5358,7 @@ module.exports = function arrayFlatMap(array, selector) {
     return array2;
 };
 
-},{}],86:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 module.exports = function arrayMap(array, selector) {
     var i = -1;
     var n = array.length;
@@ -5100,7 +5369,7 @@ module.exports = function arrayMap(array, selector) {
     return array2;
 };
 
-},{}],87:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 module.exports = function arraySlice(array, indexArg, endArg) {
     var index = indexArg || 0;
     var i = -1;
@@ -5121,11 +5390,11 @@ module.exports = function arraySlice(array, indexArg, endArg) {
     return array2;
 };
 
-},{}],88:[function(require,module,exports){
-var prefix = require(43);
-var hasOwn = require(94);
+},{}],74:[function(require,module,exports){
+var prefix = require(35).prefix;
+var hasOwn = require(80);
 var isArray = Array.isArray;
-var isObject = require(103);
+var isObject = require(89);
 
 module.exports = function clone(value) {
     var dest = value;
@@ -5133,7 +5402,7 @@ module.exports = function clone(value) {
         dest = isArray(value) ? [] : {};
         var src = value;
         for (var key in src) {
-            if (key[0] === prefix || !hasOwn(src, key)) {
+            if (key.charAt(0) === prefix || !hasOwn(src, key)) {
                 continue;
             }
             dest[key] = src[key];
@@ -5142,9 +5411,9 @@ module.exports = function clone(value) {
     return dest;
 };
 
-},{"103":103,"43":43,"94":94}],89:[function(require,module,exports){
-var splice = require(54);
-var __invalidated = require(38);
+},{"35":35,"80":80,"89":89}],75:[function(require,module,exports){
+var splice = require(40);
+var __invalidated = require(35).invalidated;
 
 module.exports = function expireNode(node, expired, lru) {
     if (!node[__invalidated]) {
@@ -5155,26 +5424,26 @@ module.exports = function expireNode(node, expired, lru) {
     return node;
 };
 
-},{"38":38,"54":54}],90:[function(require,module,exports){
-var isObject = require(103);
+},{"35":35,"40":40}],76:[function(require,module,exports){
+var isObject = require(89);
 module.exports = function getSize(node) {
     return isObject(node) && node.$expires || undefined;
 };
 
-},{"103":103}],91:[function(require,module,exports){
-var isObject = require(103);
+},{"89":89}],77:[function(require,module,exports){
+var isObject = require(89);
 module.exports = function getSize(node) {
     return isObject(node) && node.$size || 0;
 };
 
-},{"103":103}],92:[function(require,module,exports){
-var isObject = require(103);
+},{"89":89}],78:[function(require,module,exports){
+var isObject = require(89);
 module.exports = function getTimestamp(node) {
     return isObject(node) && node.$timestamp || undefined;
 };
 
-},{"103":103}],93:[function(require,module,exports){
-var isObject = require(103);
+},{"89":89}],79:[function(require,module,exports){
+var isObject = require(89);
 
 module.exports = function getType(node, anyType) {
     var type = isObject(node) && node.$type || void 0;
@@ -5184,25 +5453,25 @@ module.exports = function getType(node, anyType) {
     return type;
 };
 
-},{"103":103}],94:[function(require,module,exports){
-var isObject = require(103);
+},{"89":89}],80:[function(require,module,exports){
+var isObject = require(89);
 var hasOwn = Object.prototype.hasOwnProperty;
 
 module.exports = function(obj, prop) {
   return isObject(obj) && hasOwn.call(obj, prop);
 };
 
-},{"103":103}],95:[function(require,module,exports){
+},{"89":89}],81:[function(require,module,exports){
 var version = 1;
 module.exports = function incrementVersion() {
     return version++;
 };
 
-},{}],96:[function(require,module,exports){
-var __key = require(39);
-var __parent = require(42);
-var __version = require(49);
-var $absolutePath = require(35);
+},{}],82:[function(require,module,exports){
+var __key = require(35).key;
+var __parent = require(35).parent;
+var __version = require(35).version;
+var __absolutePath = require(35).absolutePath;
 
 module.exports = function insertNode(node, parent, key, version, optimizedPath) {
     node[__key] = key;
@@ -5211,8 +5480,8 @@ module.exports = function insertNode(node, parent, key, version, optimizedPath) 
     if (version !== undefined) {
         node[__version] = version;
     }
-    if (!node[$absolutePath]) {
-        node[$absolutePath] = optimizedPath.slice(0, optimizedPath.index).concat(key);
+    if (!node[__absolutePath]) {
+        node[__absolutePath] = optimizedPath.slice(0, optimizedPath.index).concat(key);
     }
 
     parent[key] = node;
@@ -5220,10 +5489,10 @@ module.exports = function insertNode(node, parent, key, version, optimizedPath) 
     return node;
 };
 
-},{"35":35,"39":39,"42":42,"49":49}],97:[function(require,module,exports){
-var now = require(109);
-var $now = require(124);
-var $never = require(123);
+},{"35":35}],83:[function(require,module,exports){
+var now = require(95);
+var $now = require(110);
+var $never = require(109);
 
 module.exports = function isAlreadyExpired(node) {
     var exp = node.$expires;
@@ -5233,10 +5502,10 @@ module.exports = function isAlreadyExpired(node) {
         exp < now());
 };
 
-},{"109":109,"123":123,"124":124}],98:[function(require,module,exports){
-var now = require(109);
-var $now = require(124);
-var $never = require(123);
+},{"109":109,"110":110,"95":95}],84:[function(require,module,exports){
+var now = require(95);
+var $now = require(110);
+var $never = require(109);
 
 module.exports = function isExpired(node) {
     var exp = node.$expires;
@@ -5245,49 +5514,38 @@ module.exports = function isExpired(node) {
         exp === $now || exp < now());
 };
 
-},{"109":109,"123":123,"124":124}],99:[function(require,module,exports){
+},{"109":109,"110":110,"95":95}],85:[function(require,module,exports){
 var functionTypeof = "function";
 
 module.exports = function isFunction(func) {
     return Boolean(func) && typeof func === functionTypeof;
 };
 
-},{}],100:[function(require,module,exports){
-var __parent = require(42);
-var __key = require(39);
-var __version = require(49);
-var __prev = require(44);
-var __next = require(41);
-var $absolutePath = require(35);
+},{}],86:[function(require,module,exports){
+var prefix = require(35).prefix;
+var $modelCreated = require(35).modelCreated;
 
 /**
- * If the key passed in is an internal key.  We will use a simple checking to
- * prevent infinite recursion on some machines.
+ * Determines if the key passed in is an internal key.
  *
- * @param {String} x -
+ * @param {String} x The key
  * @private
  * @returns {Boolean}
  */
 module.exports = function isInternalKey(x) {
-    return x === __parent ||
-        x === __key ||
-        x === __version ||
-        x === __prev ||
-        x === __next ||
-        x === "$size" ||
-        x === $absolutePath;
+    return x === "$size" || x === $modelCreated || (x && x.charAt(0) === prefix);
 };
 
-},{"35":35,"39":39,"41":41,"42":42,"44":44,"49":49}],101:[function(require,module,exports){
-var isObject = require(103);
+},{"35":35}],87:[function(require,module,exports){
+var isObject = require(89);
 
 module.exports = function isJSONEnvelope(envelope) {
     return isObject(envelope) && ("json" in envelope);
 };
 
-},{"103":103}],102:[function(require,module,exports){
+},{"89":89}],88:[function(require,module,exports){
 var isArray = Array.isArray;
-var isObject = require(103);
+var isObject = require(89);
 
 module.exports = function isJSONGraphEnvelope(envelope) {
     return isObject(envelope) && isArray(envelope.paths) && (
@@ -5299,15 +5557,15 @@ module.exports = function isJSONGraphEnvelope(envelope) {
     );
 };
 
-},{"103":103}],103:[function(require,module,exports){
+},{"89":89}],89:[function(require,module,exports){
 var objTypeof = "object";
 module.exports = function isObject(value) {
     return value !== null && typeof value === objTypeof;
 };
 
-},{}],104:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 var isArray = Array.isArray;
-var isObject = require(103);
+var isObject = require(89);
 
 module.exports = function isPathValue(pathValue) {
     return isObject(pathValue) && (
@@ -5316,29 +5574,29 @@ module.exports = function isPathValue(pathValue) {
         ));
 };
 
-},{"103":103}],105:[function(require,module,exports){
+},{"89":89}],91:[function(require,module,exports){
 var objTypeof = "object";
 module.exports = function isPrimitive(value) {
     return value == null || typeof value !== objTypeof;
 };
 
-},{}],106:[function(require,module,exports){
-var __parent = require(42);
+},{}],92:[function(require,module,exports){
+var __parent = require(35).parent;
 
-var $ref = require(122);
-var $error = require(121);
-var getSize = require(91);
-var getTimestamp = require(92);
-var isObject = require(103);
-var isExpired = require(98);
-var isFunction = require(99);
+var $ref = require(108);
+var $error = require(107);
+var getSize = require(77);
+var getTimestamp = require(78);
+var isObject = require(89);
+var isExpired = require(84);
+var isFunction = require(85);
 
-var promote = require(53);
-var wrapNode = require(119);
-var insertNode = require(96);
-var expireNode = require(89);
-var replaceNode = require(112);
-var updateNodeAncestors = require(117);
+var promote = require(39);
+var wrapNode = require(105);
+var insertNode = require(82);
+var expireNode = require(75);
+var replaceNode = require(98);
+var updateNodeAncestors = require(103);
 
 module.exports = function mergeJSONGraphNode(
     parent, node, message, key, requestedPath, optimizedPath,
@@ -5525,23 +5783,23 @@ module.exports = function mergeJSONGraphNode(
     return node;
 };
 
-},{"103":103,"112":112,"117":117,"119":119,"121":121,"122":122,"42":42,"53":53,"89":89,"91":91,"92":92,"96":96,"98":98,"99":99}],107:[function(require,module,exports){
-var $ref = require(122);
-var $error = require(121);
-var getType = require(93);
-var getSize = require(91);
-var getTimestamp = require(92);
+},{"103":103,"105":105,"107":107,"108":108,"35":35,"39":39,"75":75,"77":77,"78":78,"82":82,"84":84,"85":85,"89":89,"98":98}],93:[function(require,module,exports){
+var $ref = require(108);
+var $error = require(107);
+var getType = require(79);
+var getSize = require(77);
+var getTimestamp = require(78);
 
-var isExpired = require(98);
-var isPrimitive = require(105);
-var isFunction = require(99);
+var isExpired = require(84);
+var isPrimitive = require(91);
+var isFunction = require(85);
 
-var wrapNode = require(119);
-var expireNode = require(89);
-var insertNode = require(96);
-var replaceNode = require(112);
-var updateNodeAncestors = require(117);
-var updateBackReferenceVersions = require(116);
+var wrapNode = require(105);
+var expireNode = require(75);
+var insertNode = require(82);
+var replaceNode = require(98);
+var updateNodeAncestors = require(103);
+var updateBackReferenceVersions = require(102);
 
 module.exports = function mergeValueOrInsertBranch(
     parent, node, key, value,
@@ -5593,19 +5851,19 @@ module.exports = function mergeValueOrInsertBranch(
     return node;
 };
 
-},{"105":105,"112":112,"116":116,"117":117,"119":119,"121":121,"122":122,"89":89,"91":91,"92":92,"93":93,"96":96,"98":98,"99":99}],108:[function(require,module,exports){
+},{"102":102,"103":103,"105":105,"107":107,"108":108,"75":75,"77":77,"78":78,"79":79,"82":82,"84":84,"85":85,"91":91,"98":98}],94:[function(require,module,exports){
 module.exports = function noop() {};
 
-},{}],109:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 module.exports = Date.now;
 
-},{}],110:[function(require,module,exports){
-var $ref = require(122);
-var __parent = require(42);
-var splice = require(54);
-var isObject = require(103);
-var unlinkBackReferences = require(114);
-var unlinkForwardReference = require(115);
+},{}],96:[function(require,module,exports){
+var $ref = require(108);
+var __parent = require(35).parent;
+var splice = require(40);
+var isObject = require(89);
+var unlinkBackReferences = require(100);
+var unlinkForwardReference = require(101);
 
 module.exports = function removeNode(node, parent, key, lru) {
     if (isObject(node)) {
@@ -5623,10 +5881,10 @@ module.exports = function removeNode(node, parent, key, lru) {
     return false;
 };
 
-},{"103":103,"114":114,"115":115,"122":122,"42":42,"54":54}],111:[function(require,module,exports){
-var hasOwn = require(94);
-var prefix = require(43);
-var removeNode = require(110);
+},{"100":100,"101":101,"108":108,"35":35,"40":40,"89":89}],97:[function(require,module,exports){
+var hasOwn = require(80);
+var prefix = require(35).prefix;
+var removeNode = require(96);
 
 module.exports = function removeNodeAndDescendants(node, parent, key, lru) {
     if (removeNode(node, parent, key, lru)) {
@@ -5642,10 +5900,10 @@ module.exports = function removeNodeAndDescendants(node, parent, key, lru) {
     return false;
 };
 
-},{"110":110,"43":43,"94":94}],112:[function(require,module,exports){
-var isObject = require(103);
-var transferBackReferences = require(113);
-var removeNodeAndDescendants = require(111);
+},{"35":35,"80":80,"96":96}],98:[function(require,module,exports){
+var isObject = require(89);
+var transferBackReferences = require(99);
+var removeNodeAndDescendants = require(97);
 
 module.exports = function replaceNode(node, replacement, parent, key, lru) {
     if (node === replacement) {
@@ -5659,10 +5917,10 @@ module.exports = function replaceNode(node, replacement, parent, key, lru) {
     return replacement;
 };
 
-},{"103":103,"111":111,"113":113}],113:[function(require,module,exports){
-var __ref = require(46);
-var __context = require(36);
-var __refsLength = require(47);
+},{"89":89,"97":97,"99":99}],99:[function(require,module,exports){
+var __ref = require(35).ref;
+var __context = require(35).context;
+var __refsLength = require(35).refsLength;
 
 module.exports = function transferBackReferences(fromNode, destNode) {
     var fromNodeRefsLength = fromNode[__refsLength] || 0,
@@ -5681,11 +5939,11 @@ module.exports = function transferBackReferences(fromNode, destNode) {
     return destNode;
 };
 
-},{"36":36,"46":46,"47":47}],114:[function(require,module,exports){
-var __ref = require(46);
-var __context = require(36);
-var __refIndex = require(45);
-var __refsLength = require(47);
+},{"35":35}],100:[function(require,module,exports){
+var __ref = require(35).ref;
+var __context = require(35).context;
+var __refIndex = require(35).refIndex;
+var __refsLength = require(35).refsLength;
 
 module.exports = function unlinkBackReferences(node) {
     var i = -1, n = node[__refsLength] || 0;
@@ -5699,11 +5957,11 @@ module.exports = function unlinkBackReferences(node) {
     return node;
 };
 
-},{"36":36,"45":45,"46":46,"47":47}],115:[function(require,module,exports){
-var __ref = require(46);
-var __context = require(36);
-var __refIndex = require(45);
-var __refsLength = require(47);
+},{"35":35}],101:[function(require,module,exports){
+var __ref = require(35).ref;
+var __context = require(35).context;
+var __refIndex = require(35).refIndex;
+var __refsLength = require(35).refsLength;
 
 module.exports = function unlinkForwardReference(reference) {
     var destination = reference[__context];
@@ -5719,11 +5977,11 @@ module.exports = function unlinkForwardReference(reference) {
     return reference;
 };
 
-},{"36":36,"45":45,"46":46,"47":47}],116:[function(require,module,exports){
-var __ref = require(46);
-var __parent = require(42);
-var __version = require(49);
-var __refsLength = require(47);
+},{"35":35}],102:[function(require,module,exports){
+var __ref = require(35).ref;
+var __parent = require(35).parent;
+var __version = require(35).version;
+var __refsLength = require(35).refsLength;
 
 module.exports = function updateBackReferenceVersions(nodeArg, version) {
     var stack = [nodeArg];
@@ -5743,12 +6001,12 @@ module.exports = function updateBackReferenceVersions(nodeArg, version) {
     return nodeArg;
 };
 
-},{"42":42,"46":46,"47":47,"49":49}],117:[function(require,module,exports){
-var __key = require(39);
-var __version = require(49);
-var __parent = require(42);
-var removeNode = require(110);
-var updateBackReferenceVersions = require(116);
+},{"35":35}],103:[function(require,module,exports){
+var __key = require(35).key;
+var __version = require(35).version;
+var __parent = require(35).parent;
+var removeNode = require(96);
+var updateBackReferenceVersions = require(102);
 
 module.exports = function updateNodeAncestors(nodeArg, offset, lru, version) {
     var child = nodeArg;
@@ -5765,12 +6023,19 @@ module.exports = function updateNodeAncestors(nodeArg, offset, lru, version) {
     return nodeArg;
 };
 
-},{"110":110,"116":116,"39":39,"42":42,"49":49}],118:[function(require,module,exports){
+},{"102":102,"35":35,"96":96}],104:[function(require,module,exports){
 var isArray = Array.isArray;
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var isPathValue = require(104);
 var isJSONGraphEnvelope = require(102);
 var isJSONEnvelope = require(101);
 var pathSyntax = require(140);
+=======
+var isPathValue = require(90);
+var isJSONGraphEnvelope = require(88);
+var isJSONEnvelope = require(87);
+var pathSyntax = require(126);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  *
@@ -5823,21 +6088,26 @@ module.exports = function validateInput(args, allowedInput, method) {
     return true;
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"101":101,"102":102,"104":104,"140":140}],119:[function(require,module,exports){
 var jsong = require(136);
+=======
+},{"126":126,"87":87,"88":88,"90":90}],105:[function(require,module,exports){
+var jsong = require(122);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var $atom = jsong.atom;
 
-var now = require(109);
-var expiresNow = require(124);
+var now = require(95);
+var expiresNow = require(110);
 
-var __modelCreated = require(40);
+var $modelCreated = require(35).modelCreated;
 
 var atomSize = 50;
 
-var clone = require(88);
+var clone = require(74);
 var isArray = Array.isArray;
-var getSize = require(91);
-var getExpires = require(90);
+var getSize = require(77);
+var getExpires = require(76);
 
 module.exports = function wrapNode(nodeArg, typeArg, value) {
 
@@ -5852,7 +6122,7 @@ module.exports = function wrapNode(nodeArg, typeArg, value) {
     } else {
         node = $atom(value);
         type = node.$type;
-        node[__modelCreated] = true;
+        node[$modelCreated] = true;
     }
 
     if (value == null) {
@@ -5886,26 +6156,30 @@ module.exports = function wrapNode(nodeArg, typeArg, value) {
     return node;
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"109":109,"124":124,"136":136,"40":40,"88":88,"90":90,"91":91}],120:[function(require,module,exports){
+=======
+},{"110":110,"122":122,"35":35,"74":74,"76":76,"77":77,"95":95}],106:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 module.exports = "atom";
 
-},{}],121:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 module.exports = "error";
 
-},{}],122:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 module.exports = "ref";
 
-},{}],123:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 module.exports = 1;
 
-},{}],124:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = 0;
 
-},{}],125:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 "use strict";
 
 // rawAsap provides everything we need except exception management.
-var rawAsap = require(126);
+var rawAsap = require(112);
 // RawTasks are recycled to reduce GC churn.
 var freeTasks = [];
 // We queue errors to ensure they are thrown in right order (FIFO).
@@ -5969,7 +6243,7 @@ RawTask.prototype.call = function () {
     }
 };
 
-},{"126":126}],126:[function(require,module,exports){
+},{"112":112}],112:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -6193,7 +6467,11 @@ rawAsap.makeRequestCallFromTimer = makeRequestCallFromTimer;
 // https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],127:[function(require,module,exports){
+=======
+},{}],113:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 (function (process){
 "use strict";
 
@@ -6275,7 +6553,11 @@ function requestFlush() {
         if (!domain) {
             // Lazy execute the domain module.
             // Only employed if the user elects to use domains.
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
             domain = require(128);
+=======
+            domain = require(114);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
         }
         domain.active = process.domain = null;
     }
@@ -6297,12 +6579,21 @@ function requestFlush() {
     }
 }
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 }).call(this,require(130))
 },{"128":128,"130":130}],128:[function(require,module,exports){
 /*global define:false require:false */
 module.exports = (function(){
 	// Import Events
 	var events = require(129)
+=======
+}).call(this,require(116))
+},{"114":114,"116":116}],114:[function(require,module,exports){
+/*global define:false require:false */
+module.exports = (function(){
+	// Import Events
+	var events = require(115)
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 	// Export Domain
 	var domain = {}
@@ -6366,7 +6657,11 @@ module.exports = (function(){
 	};
 	return domain
 }).call(this)
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"129":129}],129:[function(require,module,exports){
+=======
+},{"115":115}],115:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -6669,7 +6964,11 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],130:[function(require,module,exports){
+=======
+},{}],116:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -6762,10 +7061,17 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],131:[function(require,module,exports){
 'use strict';
 var request = require(135);
 var buildQueryObject = require(132);
+=======
+},{}],117:[function(require,module,exports){
+'use strict';
+var request = require(121);
+var buildQueryObject = require(118);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var isArray = Array.isArray;
 
 function simpleExtend(obj, obj2) {
@@ -6863,7 +7169,11 @@ XMLHttpSource['default'] = XMLHttpSource;
 // commonjs
 module.exports = XMLHttpSource;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"132":132,"135":135}],132:[function(require,module,exports){
+=======
+},{"118":118,"121":121}],118:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 'use strict';
 module.exports = function buildQueryObject(url, method, queryData) {
   var qData = [];
@@ -6892,7 +7202,11 @@ module.exports = function buildQueryObject(url, method, queryData) {
   return data;
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],133:[function(require,module,exports){
+=======
+},{}],119:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 (function (global){
 'use strict';
 // Get CORS support even for older IE
@@ -6908,7 +7222,11 @@ module.exports = function getCORSRequest() {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],134:[function(require,module,exports){
+=======
+},{}],120:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 (function (global){
 'use strict';
 module.exports = function getXMLHttpRequest() {
@@ -6936,10 +7254,17 @@ module.exports = function getXMLHttpRequest() {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],135:[function(require,module,exports){
 'use strict';
 var getXMLHttpRequest = require(134);
 var getCORSRequest = require(133);
+=======
+},{}],121:[function(require,module,exports){
+'use strict';
+var getXMLHttpRequest = require(120);
+var getCORSRequest = require(119);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var hasOwnProp = Object.prototype.hasOwnProperty;
 
 var noop = function() {};
@@ -7159,8 +7484,13 @@ function onXhrError(observer, xhr, status, e) {
 
 module.exports = request;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"133":133,"134":134}],136:[function(require,module,exports){
 var pathSyntax = require(140);
+=======
+},{"119":119,"120":120}],122:[function(require,module,exports){
+var pathSyntax = require(126);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 function sentinel(type, value, props) {
     var copy = Object.create(null);
@@ -7199,14 +7529,22 @@ module.exports = {
     }    
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"140":140}],137:[function(require,module,exports){
+=======
+},{"126":126}],123:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 module.exports = {
     integers: 'integers',
     ranges: 'ranges',
     keys: 'keys'
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],138:[function(require,module,exports){
+=======
+},{}],124:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var TokenTypes = {
     token: 'token',
     dotSeparator: '.',
@@ -7224,7 +7562,11 @@ var TokenTypes = {
 
 module.exports = TokenTypes;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],139:[function(require,module,exports){
+=======
+},{}],125:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 module.exports = {
     indexer: {
         nested: 'Indexers cannot be nested.',
@@ -7258,10 +7600,17 @@ module.exports = {
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],140:[function(require,module,exports){
 var Tokenizer = require(146);
 var head = require(141);
 var RoutedTokens = require(137);
+=======
+},{}],126:[function(require,module,exports){
+var Tokenizer = require(132);
+var head = require(127);
+var RoutedTokens = require(123);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 var parser = function parser(string, extendedRules) {
     return head(new Tokenizer(string, extendedRules));
@@ -7318,10 +7667,17 @@ parser.fromPath = function(path, ext) {
 // Potential routed tokens.
 parser.RoutedTokens = RoutedTokens;
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"137":137,"141":141,"146":146}],141:[function(require,module,exports){
 var TokenTypes = require(138);
 var E = require(139);
 var indexer = require(142);
+=======
+},{"123":123,"127":127,"132":132}],127:[function(require,module,exports){
+var TokenTypes = require(124);
+var E = require(125);
+var indexer = require(128);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * The top level of the parse tree.  This returns the generated path
@@ -7379,6 +7735,7 @@ module.exports = function head(tokenizer) {
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"138":138,"139":139,"142":142}],142:[function(require,module,exports){
 var TokenTypes = require(138);
 var E = require(139);
@@ -7386,6 +7743,15 @@ var idxE = E.indexer;
 var range = require(144);
 var quote = require(143);
 var routed = require(145);
+=======
+},{"124":124,"125":125,"128":128}],128:[function(require,module,exports){
+var TokenTypes = require(124);
+var E = require(125);
+var idxE = E.indexer;
+var range = require(130);
+var quote = require(129);
+var routed = require(131);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * The indexer is all the logic that happens in between
@@ -7495,9 +7861,15 @@ module.exports = function indexer(tokenizer, openingToken, state, out) {
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"138":138,"139":139,"143":143,"144":144,"145":145}],143:[function(require,module,exports){
 var TokenTypes = require(138);
 var E = require(139);
+=======
+},{"124":124,"125":125,"129":129,"130":130,"131":131}],129:[function(require,module,exports){
+var TokenTypes = require(124);
+var E = require(125);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var quoteE = E.quote;
 
 /**
@@ -7579,10 +7951,17 @@ module.exports = function quote(tokenizer, openingToken, state, out) {
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"138":138,"139":139}],144:[function(require,module,exports){
 var Tokenizer = require(146);
 var TokenTypes = require(138);
 var E = require(139);
+=======
+},{"124":124,"125":125}],130:[function(require,module,exports){
+var Tokenizer = require(132);
+var TokenTypes = require(124);
+var E = require(125);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * The indexer is all the logic that happens in between
@@ -7658,10 +8037,17 @@ module.exports = function range(tokenizer, openingToken, state, out) {
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"138":138,"139":139,"146":146}],145:[function(require,module,exports){
 var TokenTypes = require(138);
 var RoutedTokens = require(137);
 var E = require(139);
+=======
+},{"124":124,"125":125,"132":132}],131:[function(require,module,exports){
+var TokenTypes = require(124);
+var RoutedTokens = require(123);
+var E = require(125);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var routedE = E.routed;
 
 /**
@@ -7724,8 +8110,13 @@ module.exports = function routed(tokenizer, openingToken, state, out) {
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"137":137,"138":138,"139":139}],146:[function(require,module,exports){
 var TokenTypes = require(138);
+=======
+},{"123":123,"124":124,"125":125}],132:[function(require,module,exports){
+var TokenTypes = require(124);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var DOT_SEPARATOR = '.';
 var COMMA_SEPARATOR = ',';
 var OPENING_BRACKET = '[';
@@ -7878,9 +8269,15 @@ function getNext(string, idx, ext) {
 
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"138":138}],147:[function(require,module,exports){
 var toPaths = require(153);
 var toTree = require(154);
+=======
+},{"124":124}],133:[function(require,module,exports){
+var toPaths = require(139);
+var toTree = require(140);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = function collapse(paths) {
     var collapseMap = paths.
@@ -7902,8 +8299,13 @@ module.exports = function collapse(paths) {
     return toPaths(collapseMap);
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"153":153,"154":154}],148:[function(require,module,exports){
 var iterateKeySet = require(150);
+=======
+},{"139":139,"140":140}],134:[function(require,module,exports){
+var iterateKeySet = require(136);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * Tests to see if the intersection should be stripped from the
@@ -7951,6 +8353,7 @@ module.exports = function hasIntersection(tree, path, depth) {
     return intersects;
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"150":150}],149:[function(require,module,exports){
 module.exports = {
     iterateKeySet: require(150),
@@ -7964,6 +8367,21 @@ module.exports = {
 };
 
 },{"147":147,"148":148,"150":150,"151":151,"152":152,"153":153,"154":154,"155":155}],150:[function(require,module,exports){
+=======
+},{"136":136}],135:[function(require,module,exports){
+module.exports = {
+    iterateKeySet: require(136),
+    toTree: require(140),
+    toTreeWithUnion: require(141),
+    pathsComplementFromTree: require(138),
+    pathsComplementFromLengthTree: require(137),
+    hasIntersection: require(134),
+    toPaths: require(139),
+    collapse: require(133)
+};
+
+},{"133":133,"134":134,"136":136,"137":137,"138":138,"139":139,"140":140,"141":141}],136:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var isArray = Array.isArray;
 
 /**
@@ -8070,8 +8488,13 @@ function initializeNote(key, note) {
     note.arrayOffset = 0;
 }
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],151:[function(require,module,exports){
 var hasIntersection = require(148);
+=======
+},{}],137:[function(require,module,exports){
+var hasIntersection = require(134);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * Compares the paths passed in with the tree.  Any of the paths that are in
@@ -8100,8 +8523,13 @@ module.exports = function pathsComplementFromLengthTree(paths, tree) {
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"148":148}],152:[function(require,module,exports){
 var hasIntersection = require(148);
+=======
+},{"134":134}],138:[function(require,module,exports){
+var hasIntersection = require(134);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 /**
  * Compares the paths passed in with the tree.  Any of the paths that are in
@@ -8129,7 +8557,11 @@ module.exports = function pathsComplementFromTree(paths, tree) {
 };
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"148":148}],153:[function(require,module,exports){
+=======
+},{"134":134}],139:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var isArray = Array.isArray;
 var typeOfObject = "object";
 
@@ -8351,8 +8783,13 @@ function isNumber(val) {
 }
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{}],154:[function(require,module,exports){
 var iterateKeySet = require(150);
+=======
+},{}],140:[function(require,module,exports){
+var iterateKeySet = require(136);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 var isArray = Array.isArray;
 
 /**
@@ -8397,6 +8834,7 @@ function innerToTree(seed, path, depth) {
 }
 
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"150":150}],155:[function(require,module,exports){
 
 },{}],156:[function(require,module,exports){
@@ -8408,6 +8846,19 @@ module.exports = require(161)
 'use strict';
 
 var asap = require(127);
+=======
+},{"136":136}],141:[function(require,module,exports){
+
+},{}],142:[function(require,module,exports){
+'use strict';
+
+module.exports = require(147)
+
+},{"147":147}],143:[function(require,module,exports){
+'use strict';
+
+var asap = require(113);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 function noop() {}
 
@@ -8590,10 +9041,17 @@ function doResolve(fn, promise) {
   }
 }
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"127":127}],158:[function(require,module,exports){
 'use strict';
 
 var Promise = require(157);
+=======
+},{"113":113}],144:[function(require,module,exports){
+'use strict';
+
+var Promise = require(143);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = Promise;
 Promise.prototype.done = function (onFulfilled, onRejected) {
@@ -8605,12 +9063,20 @@ Promise.prototype.done = function (onFulfilled, onRejected) {
   });
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"157":157}],159:[function(require,module,exports){
+=======
+},{"143":143}],145:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 'use strict';
 
 //This file contains the ES6 extensions to the core Promises/A+ API
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var Promise = require(157);
+=======
+var Promise = require(143);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = Promise;
 
@@ -8714,10 +9180,17 @@ Promise.prototype['catch'] = function (onRejected) {
   return this.then(null, onRejected);
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"157":157}],160:[function(require,module,exports){
 'use strict';
 
 var Promise = require(157);
+=======
+},{"143":143}],146:[function(require,module,exports){
+'use strict';
+
+var Promise = require(143);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = Promise;
 Promise.prototype['finally'] = function (f) {
@@ -8732,6 +9205,7 @@ Promise.prototype['finally'] = function (f) {
   });
 };
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"157":157}],161:[function(require,module,exports){
 'use strict';
 
@@ -8742,13 +9216,30 @@ require(159);
 require(162);
 
 },{"157":157,"158":158,"159":159,"160":160,"162":162}],162:[function(require,module,exports){
+=======
+},{"143":143}],147:[function(require,module,exports){
+'use strict';
+
+module.exports = require(143);
+require(144);
+require(146);
+require(145);
+require(148);
+
+},{"143":143,"144":144,"145":145,"146":146,"148":148}],148:[function(require,module,exports){
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 'use strict';
 
 // This file contains then/promise specific extensions that are only useful
 // for node.js interop
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 var Promise = require(157);
 var asap = require(125);
+=======
+var Promise = require(143);
+var asap = require(111);
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 
 module.exports = Promise;
 
@@ -8814,5 +9305,9 @@ Promise.prototype.nodeify = function (callback, ctx) {
   });
 }
 
+<<<<<<< 35fd552631356c820e24af259adb5ba3df82edd2
 },{"125":125,"157":157}]},{},[1])(1)
+=======
+},{"111":111,"143":143}]},{},[1])(1)
+>>>>>>> Fixes bug in walkPath that could corrupt cache references because they aren't defensively copied. Also defensively copies new internal deref references so they can't be corrupted by user code. Normalizes internal key definitions.
 });
