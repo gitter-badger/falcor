@@ -5729,7 +5729,7 @@ module.exports = function updateBackReferenceVersions(nodeArg, version) {
     var stack = [nodeArg];
     var count = 0;
     do {
-        var node = stack[count--];
+        var node = stack[count];
         if (node && node[__version] !== version) {
             node[__version] = version;
             stack[count++] = node[__parent];
@@ -5739,7 +5739,7 @@ module.exports = function updateBackReferenceVersions(nodeArg, version) {
                 stack[count++] = node[__ref + i];
             }
         }
-    } while (count > -1);
+    } while (--count > -1);
     return nodeArg;
 };
 
