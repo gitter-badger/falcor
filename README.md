@@ -4,6 +4,8 @@
 
 # Falcor [![Build Status](https://travis-ci.org/Netflix/falcor.svg)](https://travis-ci.org/Netflix/falcor) [![Coverage Status](https://coveralls.io/repos/Netflix/falcor/badge.svg?branch=master&service=github)](https://coveralls.io/github/Netflix/falcor?branch=master) [![bitHound Score](https://www.bithound.io/github/Netflix/falcor/badges/score.svg)](https://www.bithound.io/github/Netflix/falcor)
 
+[![Join the chat at https://gitter.im/trxcllnt/falcor](https://badges.gitter.im/trxcllnt/falcor.svg)](https://gitter.im/trxcllnt/falcor?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Developer Preview
 
 **This release is a developer preview.** We are looking for community help to track down and fix bugs. We are also looking for help integrating with existing MVC frameworks, as well as ports to other platforms.
